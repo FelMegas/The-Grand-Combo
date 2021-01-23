@@ -1,0 +1,83 @@
+Loyalty Changes per Party Issue
+
+Reg Pol	Mor	Plur	Sec	Ath
+Moralism 0.2	0.1	-0.1	-0.2 #Reac, Con, Fasc
+Pluralism 0.1	0.2	0.1	-0.1 #Liberals
+Secular -0.1	0.1	0.2	0.1 #An-Lib, Soc
+Atheist -0.2	-0.1	0.1	0.2 #Communist, Anarchist
+
+Ec Pol	Lais	Inter	StCap	Plan
+Laissez	0.2	0.1	-0.1	-0.2 #An-Lib, Liberal
+Interv	0.1	0.2	0.1	-0.1 #Con
+StaCap	-0.1	0.1	0.2	0.1 #Reac, Fasc
+Planned	-0.2	-0.1	0.1	0.2 #Socialist, Communist, Anarchist
+
+TraPol	Prot	Free
+Prot	0.2	-0.2 #Con, Reac, Communi, Fascist
+Free	-0.2	0.2 #An-Lib, Liberal, Socialist, Anarchist
+
+CitPol	Res	Lim	Full
+Residen	0.4	-0.2	-0.4 #Reac, Fasc
+Limit	-0.2	0.4	-0.2 #Con, Liberal, An-Lib
+Full	-0.4	-0.2	0.4 # Soc, Commie, Anarchist
+
+MilPol	Jing	Pro	Anti	Pacif
+Jingo	0.2	0.1	-0.1	-0.2 #Reac, Fascist, 
+Pro	0.1	0.2	0.1	-0.1 #Con, Lib, Communist
+Anti	-0.1	0.1	0.2	0.1 #Soc, An-Lib
+Pacif	-0.2	-0.1	0.1	0.2 #Anarchist, 
+
+Values assume a factor issue change of 0.05, multiply accordingly if a different factor is applied
+(Trapol due to having only 2 options assumes a factor of 0.1 instead)
+Code Template:
+		any_owned = {
+			limit = { is_colonial = no }
+			party_loyalty = { ideology = reactionary loyalty_value = -0.3 }
+			party_loyalty = { ideology = conservative loyalty_value = -0.3 }
+			party_loyalty = { ideology = liberal loyalty_value = 0.3 }
+		}
+		random_owned = {
+			limit = { owner = { is_ideology_enabled = anarcho_liberal } }
+			owner = {
+				any_owned = {
+					limit = { is_colonial = no }
+					party_loyalty = { ideology = anarcho_liberal loyalty_value = 0.3 }
+				}
+			}
+		}
+		random_owned = {
+			limit = { owner = { is_ideology_enabled = socialist } }
+			owner = {
+				any_owned = {
+					limit = { is_colonial = no }
+					party_loyalty = { ideology = socialist loyalty_value = 0.3 }
+				}
+			}
+		}
+		random_owned = {
+			limit = { owner = { is_ideology_enabled = communist } }
+			owner = {
+				any_owned = {
+					limit = { is_colonial = no }
+					party_loyalty = { ideology = communist loyalty_value = -0.3 }
+				}
+			}
+		}
+		random_owned = {
+			limit = { owner = { is_ideology_enabled = fascist } }
+			owner = {
+				any_owned = {
+					limit = { is_colonial = no }
+					party_loyalty = { ideology = fascist loyalty_value = -0.3 }
+				}
+			}
+		}
+		random_owned = {
+			limit = { owner = { is_ideology_enabled = anarchist } }
+			owner = {
+				any_owned = {
+					limit = { is_colonial = no }
+					party_loyalty = { ideology = anarchist loyalty_value = 0.3 }
+				}
+			}
+		}
